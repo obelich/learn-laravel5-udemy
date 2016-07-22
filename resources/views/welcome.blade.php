@@ -1,45 +1,39 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('layouts.master')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
-        <style>
-            html, body {
-                height: 100%;
-            }
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato', sans-serif;
-            }
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+@section('content')
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
+    <h1>Primera Mi primera pagina en Laravel</h1>
 
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
-        </div>
-    </body>
-</html>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus consectetur corporis deleniti dolores enim et eum ex harum ipsa libero magnam, molestias nemo nihil quas recusandae temporibus ut voluptatem, voluptates.
+
+    </p>
+
+    <ul>
+        @for($i = 0; $i < 5; $i++)
+            @if($i % 2 === 0)
+                <li>Iteration {{ $i + 1  }}</li>
+            @endif
+
+        @endfor
+    </ul>
+
+
+  <form action="{{ route('benice')  }}" method="post">
+    <label>Yo quiero</label>
+    <select name="action">
+      <option value="greet">Greet</option>
+      <option value="hug">Hug</option>
+      <option value="salute">Salute</option>
+
+    </select>
+
+    <input type="text" name="name">
+    <button type="submit"> Accion Sugoi</button>
+    <input type="hidden" value="{{  Session::token() }}" name="_token">
+  </form>
+
+@endsection
