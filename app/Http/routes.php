@@ -11,33 +11,80 @@
 |
 */
 
-Route::get('/', function () {
+//Aplicando ruta de grupo
+
+
+
+
+//Ruteo Normal
+
+//Route::get('/', function () {
+//    return view('welcome');
+//})->name('home');
+//
+//Route::get('/do/greet', function () {
+//    return view('actions.greet');
+//})->name('greet');
+//
+//Route::get('/do/salute/{name?}', function ($name = null) {
+//  return view('actions.salute', ['name'=> $name]);
+//})->name('salute');
+//
+//Route::get('/do/hug', function () {
+//  return view('actions.hug');
+//})->name('hug');
+//
+//
+//Route::post('/do', function (\Illuminate\Http\Request $request) {
+//  if(isset($request['action']) && $request['name'] )
+//  {
+//    if(strlen($request['name']) > 0)
+//    {
+//      return view('actions.nice', ['action'=> $request['action'], 'name'=> $request['name'] ]);
+//    }
+//    return redirect()->back();
+//  }
+//  return redirect()->back();
+//})->name('benice');
+
+
+
+
+Route::group(['prefix'=> 'do'], function()
+{
+
+  Route::get('/', function () {
     return view('welcome');
-})->name('home');
+  })->name('home');
 
-Route::get('/greet', function () {
+  Route::get('/greet', function () {
     return view('actions.greet');
-})->name('greet');
+  })->name('greet');
 
-Route::get('/salute/{name?}', function ($name = null) {
-  return view('actions.salute', ['name'=> $name]);
-})->name('salute');
+  Route::get('/salute/{name?}', function ($name = null) {
+    return view('actions.salute', ['name'=> $name]);
+  })->name('salute');
 
-Route::get('/hug', function () {
-  return view('actions.hug');
-})->name('hug');
+  Route::get('/hug', function () {
+    return view('actions.hug');
+  })->name('hug');
 
 
-Route::post('/benice', function (\Illuminate\Http\Request $request) {
-  if(isset($request['action']) && $request['name'] )
-  {
-    if(strlen($request['name']) > 0)
+  Route::post('/', function (\Illuminate\Http\Request $request) {
+    if(isset($request['action']) && $request['name'] )
     {
-      return view('actions.nice', ['action'=> $request['action'], 'name'=> $request['name'] ]);
+      if(strlen($request['name']) > 0)
+      {
+        return view('actions.nice', ['action'=> $request['action'], 'name'=> $request['name'] ]);
+      }
+      return redirect()->back();
     }
     return redirect()->back();
-  }
-  return redirect()->back();
-})->name('benice');
+  })->name('benice');
+
+
+});
+
+
 
 
