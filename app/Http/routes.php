@@ -53,6 +53,16 @@
 Route::group(['prefix'=> 'do'], function()
 {
 
+  // Agregando Acciones de controlador
+  Route::get('/{actions}/{name?}', [
+      'uses'=> 'NiceActionController@getNiceAction',
+      'as' => 'niceaction'
+  ]);
+
+
+
+
+
   Route::get('/', function () {
     return view('welcome');
   })->name('home');
@@ -68,6 +78,8 @@ Route::group(['prefix'=> 'do'], function()
   Route::get('/hug', function () {
     return view('actions.hug');
   })->name('hug');
+
+
 
 
   Route::post('/', function (\Illuminate\Http\Request $request) {

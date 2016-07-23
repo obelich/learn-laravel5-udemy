@@ -16,9 +16,9 @@
             @yield('content', 'Esperando contenido')
         </div>
     <div class="centered">
-        <a href="{{ route('greet')  }}">Greet</a>
-        <a href="{{ route('hug')  }}">Hug</a>
-        <a href="{{ route('salute')  }}">Salute</a>
+        <a href="{{ route('niceaction', ['action' => 'greet'])  }}">Greet</a>
+        <a href="{{ route('niceaction', ['action' => 'hug'])  }}">Hug</a>
+        <a href="{{ route('niceaction', ['action' => 'salute'])  }}">Salute</a>
     </div>
 
         <script href="{{ asset('js/main.css') }}" ></script>
