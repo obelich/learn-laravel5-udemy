@@ -13,14 +13,14 @@
 
 //Aplicando ruta de grupo
 
-
+Route::get('/', function () {
+  return view('welcome');
+})->name('home');
 
 
 //Ruteo Normal
 
-//Route::get('/', function () {
-//    return view('welcome');
-//})->name('home');
+
 //
 //Route::get('/do/greet', function () {
 //    return view('actions.greet');
@@ -82,17 +82,25 @@ Route::group(['prefix'=> 'do'], function()
 
 
 
-  Route::post('/', function (\Illuminate\Http\Request $request) {
-    if(isset($request['action']) && $request['name'] )
-    {
-      if(strlen($request['name']) > 0)
-      {
-        return view('actions.nice', ['action'=> $request['action'], 'name'=> $request['name'] ]);
-      }
-      return redirect()->back();
-    }
-    return redirect()->back();
-  })->name('benice');
+
+  Route::post('/', [
+      'uses'=> 'NiceActionController@postNiceAction',
+      'as' => 'benice'
+  ]);
+
+
+
+//  Route::post('/', function (\Illuminate\Http\Request $request) {
+//    if(isset($request['action']) && $request['name'] )
+//    {
+//      if(strlen($request['name']) > 0)
+//      {
+//        return view('actions.nice', ['action'=> $request['action'], 'name'=> $request['name'] ]);
+//      }
+//      return redirect()->back();
+//    }
+//    return redirect()->back();
+//  })->name('benice');
 
 
 });
