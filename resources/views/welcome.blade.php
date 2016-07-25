@@ -5,22 +5,22 @@
 
 @section('content')
 
-    <h1>Primera Mi primera pagina en Laravel</h1>
+  <h1>Primera Mi primera pagina en Laravel</h1>
 
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus consectetur corporis deleniti dolores enim et eum ex harum ipsa libero magnam, molestias nemo nihil quas recusandae temporibus ut voluptatem, voluptates.
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus consectetur corporis deleniti dolores enim et eum ex harum ipsa libero magnam, molestias nemo nihil quas recusandae temporibus ut voluptatem, voluptates.
 
-    </p>
+  </p>
 
-    <ul>
-        @for($i = 0; $i < 5; $i++)
-            @if($i % 2 === 0)
-                <li>Iteration {{ $i + 1  }}</li>
-            @endif
+  <ul>
+    @for($i = 0; $i < 5; $i++)
+      @if($i % 2 === 0)
+        <li>Iteration {{ $i + 1  }}</li>
+      @endif
 
-        @endfor
-    </ul>
-
+    @endfor
+  </ul>
+  <br />
 
   <form action="{{ route('benice')  }}" method="post">
     <label>Yo quiero</label>

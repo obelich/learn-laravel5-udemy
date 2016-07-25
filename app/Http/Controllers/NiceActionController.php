@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use App\Http\Requests;
 
@@ -15,15 +16,19 @@ class NiceActionController extends Controller
 
   public function postNiceAction(Request $request)
   {
-    if(isset($request['action']) && $request['name'] )
-    {
-      if(strlen($request['name']) > 0)
-      {
-        return view('actions.nice', ['action'=> $request['action'], 'name'=>   $this->transformName($request['name']) ]);
-      }
-      return redirect()->back();
-    }
-    return redirect()->back();
+//    $this->validate($request, [
+//        'action'=>'required',
+//        'name'=>'required'
+//
+//    ]);
+
+     Validator::make(
+        array('action' => 'required'),
+        array('name' => 'required|alpha')
+    );
+
+    return view('actions.nice', ['action'=> $request['action'], 'name'=>   $this->transformName($request['name']) ]);
+
   }
 
 

@@ -10,6 +10,20 @@
 
     </head>
     <body>
+    <?php echo count($errors);  ?>
+    @if (count($errors) > 0 )
+      {{$errors}}
+      <div>
+        <ul>
+          @foreach($errors->all() as $error)
+            <li>{{  $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+
+    @endif
+
+
     @include('partials.header')
 
         <div class="">
